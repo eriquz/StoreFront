@@ -21,7 +21,7 @@ namespace StoreFront.DATA.EF
         }
     
         public int StatusID { get; set; }
-        public string Status1 { get; set; }
+        public string Statuses { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }

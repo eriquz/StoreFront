@@ -81,7 +81,7 @@ namespace StoreFront.DATA.EF //.StoreFrontMetadata Comment this Out to allow fun
             [Required(ErrorMessage = "*")]
             [StringLength(25, ErrorMessage = "*Must be 25 characters or less")]
             [Display(Name = "Product Status")]
-            public string Status1 { get; set; }
+            public string Statuses { get; set; }
         }
 
         [MetadataType(typeof(StatusMetadata))]
@@ -94,7 +94,9 @@ namespace StoreFront.DATA.EF //.StoreFrontMetadata Comment this Out to allow fun
         public class ShoeSizeMetadata
         {
 
-            public int ShoeSizeID { get; set; }
+            //public int ShoeSizeID { get; set; }
+
+
             [Required(ErrorMessage = "* Size is required")]
             [Display(Name = "Size")]
             public int Size { get; set; }

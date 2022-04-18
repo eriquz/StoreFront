@@ -68,7 +68,7 @@
             <PropertyRef Name="StatusID" />
           </Key>
           <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Status" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Statuses" Type="varchar" MaxLength="25" Nullable="false" />
         </EntityType>
         <Association Name="FK_Employees_Departments">
           <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
@@ -253,8 +253,8 @@
             <PropertyRef Name="StatusID" />
           </Key>
           <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Status1" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Products_Statuses" FromRole="Statuses" ToRole="Products" />
+          <Property Name="Statuses" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Products_Categories">
           <End Role="Categories" Type="Self.Category" Multiplicity="1" />
@@ -434,8 +434,8 @@
           <EntitySetMapping Name="Statuses">
             <EntityTypeMapping TypeName="StoreFrontModel.Status">
               <MappingFragment StoreEntitySet="Statuses">
+                <ScalarProperty Name="Statuses" ColumnName="Statuses" />
                 <ScalarProperty Name="StatusID" ColumnName="StatusID" />
-                <ScalarProperty Name="Status1" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
