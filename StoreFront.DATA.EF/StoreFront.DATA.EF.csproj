@@ -53,7 +53,6 @@
     <Compile Include="Category.cs">
       <DependentUpon>StoreFront.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="Department.cs">
       <DependentUpon>StoreFront.tt</DependentUpon>
     </Compile>
@@ -88,6 +87,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StoreFront.edmx</DependentUpon>
     </Compile>
+    <Compile Include="StoreFrontMetadata\StoreFrontMetadata.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="StoreFront.edmx">

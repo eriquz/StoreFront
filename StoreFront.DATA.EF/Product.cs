@@ -23,6 +23,7 @@ namespace StoreFront.DATA.EF
         public Nullable<int> UnitsInStock { get; set; }
         public Nullable<int> StatusID { get; set; }
         public string Description { get; set; }
+        public string ProductImage { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual Manufacturer Manufacturer { get; set; }
