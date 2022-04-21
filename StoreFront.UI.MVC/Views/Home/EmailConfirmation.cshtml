@@ -4,47 +4,48 @@
     ViewBag.Title = "EmailConfirmation";
 }
 
-<h2>EmailConfirmation</h2>
+<p Class=" alert alert-success text-center" style="font-size: 1.25em;">Email Has been Sent!</p>
 
-<div>
-    <h4>ContactViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Subject)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Subject)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Subject)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Subject)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Message)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Message)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Message)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Message)
+            </dd>
 
-    </dl>
+        </dl>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+<p class="text-left p-5">
+    @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ })*@ 
+    @Html.ActionLink("Back to Home", "Index",null,( new { @class="btn btn-secondary"}))
 </p>

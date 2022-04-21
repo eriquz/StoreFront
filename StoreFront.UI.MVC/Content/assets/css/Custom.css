@@ -1,0 +1,34 @@
+﻿/*NAV and BANNER*/
+
+.Nav-Fix
+{
+    height:80px;
+}
+
+.banner {
+    background-color: #ece1e3;
+    position: relative;
+    text-align: center;
+    padding-top: 0;
+}
+/*.about-heading {
+    background: url('../images/about-heading.jpg');
+    background-position: 70% center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}*/
+
+
+/*Categories*/
+.dataTables_wrapper .dataTables_paginate .paginate_button.current  {
+    background: linear-gradient(to bottom, Red 0%, #000 100%);
+}
+
+
+
+/*Footer*/
+#ftback {
+    background-color: #ece1e3;
+}
+
+

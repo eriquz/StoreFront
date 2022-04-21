@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>Sixteen Clothing HTML Template</title>
+    <title>PS | StoreFront </title>
 
     <!-- Bootstrap core CSS -->
     <link href="~/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -25,6 +25,10 @@
         <link rel="stylesheet" href="~/Content/assets/css/templatemo-sixteen.css">
         <link rel="stylesheet" href="~/Content/assets/css/owl.css">*@
     @Styles.Render("~/Content/css")
+
+    <!--Custom CSS-->
+    <link href="~/Content/assets/css/Custom.css" rel="stylesheet" />
+
 
     @RenderSection("htmlHead", required: false)
 
@@ -43,29 +47,51 @@
     </div>
     <!-- ***** Preloader End ***** -->
     <!-- Header -->
+
     <header class="">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="index.html"><h2>Sixteen <em>Clothing</em></h2></a>
+                <a class="navbar-brand" href="@Url.Action("Index","Home")"><h2>Project <em>Sneaker</em></h2></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.html">
-                                Home
-                                <span class="sr-only">(current)</span>
-                            </a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index","Home")">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index","Products")">Our Products</a>
+                            <a class="nav-link" href="@Url.Action("Index", "Products")">Products</a>
+                        </li>
+                        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index", "Manufacturers")">Manufacturers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index", "Categories")">Categories</a>
+                            </li>
+                        }
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("About", "Home")">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("About","Home")">About Us</a>
+                            <a class="nav-link" href="@Url.Action("Contact", "Home")">Contact</a>
                         </li>
+                        @Html.Partial("_LoginPartial")
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Contact","Home")">Contact Us</a>
+                            @* Only show the cart icon if session cart exists and has more than 0 items in it. *@
+                            @if (Session["cart"] != null && ViewBag.CountItems > 0)
+                            {
+                                <a class="nav-link" href="@Url.Action("Index", "ShoppingCart")">
+                                    <i class="fa fa-shopping-cart" />Cart (@ViewBag.CountItems)
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="nav-link" href="@Url.Action("Index", "ShoppingCart")">Cart</a>
+
+                            }
                         </li>
                     </ul>
                 </div>
@@ -73,23 +99,32 @@
         </nav>
     </header>
 
+    <div class="Nav-Fix">
+
+    </div>
+    <div class="banner p-3">
+        <h2>
+            @ViewBag.Title
+        </h2>
+    </div>
+
     <!-- Page Content -->
     @RenderBody()
 
     <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="inner-content">
-                        <p>
-                            Copyright &copy; 2020 Sixteen Clothing Co., Ltd.
 
-                            - Design: <a rel="nofollow noopener" href="https://templatemo.com" target="_blank">TemplateMo</a>
-                        </p>
-                    </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="inner-content" id="ftback">
+                    <p>
+                        Copyright &copy; 2020 Sixteen Clothing Co., Ltd.
+
+                        - Design: <a rel="nofollow noopener" href="https://templatemo.com" target="_blank">Enrique Garcia</a>
+                    </p>
                 </div>
             </div>
         </div>
+
     </footer>
 
 

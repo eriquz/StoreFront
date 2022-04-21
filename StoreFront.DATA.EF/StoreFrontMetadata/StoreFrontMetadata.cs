@@ -19,7 +19,7 @@ namespace StoreFront.DATA.EF //.StoreFrontMetadata Comment this Out to allow fun
             [Display(Name = "Product")]
             public string ProductName { get; set; }
 
-            [Required(ErrorMessage = "*Shoe Size is required")]
+            
             [Display(Name = "Shoe Size")]
             public int ShoeSizeID { get; set; }
 
@@ -161,9 +161,9 @@ namespace StoreFront.DATA.EF //.StoreFrontMetadata Comment this Out to allow fun
 
             //TODO: RegEx for Phone Number?
             [Required(ErrorMessage = "*")]
-            [Range(10, int.MaxValue, ErrorMessage = "Must be a valid number 0 or larger.")]
+            
             [Display(Name = "Phone Number")]
-            public int PhonePhoneNumber { get; set; }
+            public string PhoneNumber { get; set; }
 
             [Required(ErrorMessage = "*")]
             [Range(1, int.MaxValue, ErrorMessage = "Must be a valid number 0 or larger.")]

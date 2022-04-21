@@ -16,7 +16,6 @@ namespace StoreFront.UI.MVC.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public ActionResult About()
         {
             ViewBag.Message = "Your app description page.";
@@ -45,7 +44,9 @@ namespace StoreFront.UI.MVC.Controllers
                 $"{cvm.Message}" +
                 $"Please reply to {cvm.Email} at your earliest convenience.";
 
+
             MailMessage mm = new MailMessage(
+
                 ConfigurationManager.AppSettings["EmailUser"].ToString(),
                 ConfigurationManager.AppSettings["EmailTo"].ToString(),
                 cvm.Subject,

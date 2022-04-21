@@ -24,7 +24,7 @@ namespace StoreFront.DATA.EF
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Nullable<int> DirectReportID { get; set; }
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         public System.DateTime BirthDate { get; set; }
         public int DepartmentID { get; set; }
     

@@ -8,13 +8,14 @@ namespace StoreFront.UI.MVC
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js",
                         "~/Content/vendor/jquery/jquery.min.js",
                         "~/Content/assets/js/custom.js",
                       "~/Content/assets/js/owl.js",
                       "~/Content/assets/js/slick.js",
                       "~/Content/assets/js/isotope.js",
-                      "~/Content/assets/js/accordions.js"));
+                      "~/Content/assets/js/accordions.js"
+                      
+                      ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -22,16 +23,21 @@ namespace StoreFront.UI.MVC
 
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js",
-                      "~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"));
+                      "~/Scripts/jQuery-3.3.1.min.js",
+                      "~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js",
+                      "~/Content/vendor/bootstrap/js/bootstrap.min.js",
+                      "~/Scripts/DataTables/jquery.datatables.min.js"///Datatables
+                      ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css",
+                      "~/content/css/bootstrap.min.css",
                       "~/Content/assets/css/fontawesome.css",
                       "~/Content/assets/css/templatemo-sixteen.css",
-                      "~/Content/assets/css/owl.css"
+                      "~/Content/assets/css/owl.css",
+                      "~/Content/PagedList.css",//PageListing
+                      "~/Content/DataTables/css/dataTables.jqueryui.min.css"//Datatables
+
                       ));
         }
     }

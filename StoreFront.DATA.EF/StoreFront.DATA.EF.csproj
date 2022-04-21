@@ -90,32 +90,30 @@
     <Compile Include="StoreFrontMetadata\StoreFrontMetadata.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
     <EntityDeploy Include="StoreFront.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>StoreFront.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="packages.config" />
     <None Include="StoreFront.edmx.diagram">
       <DependentUpon>StoreFront.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="StoreFront.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>StoreFront.Context.cs</LastGenOutput>
       <DependentUpon>StoreFront.edmx</DependentUpon>
+      <LastGenOutput>StoreFront.Context.cs</LastGenOutput>
     </Content>
     <Content Include="StoreFront.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>StoreFront.edmx</DependentUpon>
       <LastGenOutput>StoreFront.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

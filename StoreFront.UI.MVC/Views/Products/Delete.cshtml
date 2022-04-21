@@ -47,8 +47,9 @@
             @Html.DisplayNameFor(model => model.ProductImage)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductImage)
+        <dd class="col-md-6">
+            @*@Html.DisplayFor(model => model.ProductImage)*@
+            <img src="~/Content/assets/images/Products/@Model.ProductImage" alt="@Model.ProductName" />
         </dd>
 
         <dt>

@@ -1,81 +1,119 @@
-﻿@model IEnumerable<StoreFront.DATA.EF.Product>
+﻿@model PagedList.IPagedList<StoreFront.DATA.EF.Product>
+@using PagedList.Mvc;
 
-@{
-    ViewBag.Title = "Index";
-}
 
-<h2>Index</h2>
+@{ ViewBag.Title = "Products"; }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductImage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category.CategoryName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Manufacturer.ManufactureName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ShoeSize.Size)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status.Statuses)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UnitsInStock)
-        </th>
-        <th></th>
-    </tr>
+@* ADDED: Pager Code (Can be placed wherever we want on the page) *@
+    @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductImage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category.CategoryName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Manufacturer.ManufactureName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ShoeSize.Size)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status.Statuses)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UnitsInStock)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.ProductID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
-        </td>
-    </tr>
-}
 
-</table>
+@* For filtering with my categories in products Controller Index *@
+@Html.ActionLink("Mens", "Index", "Products", new { categoryFilter="mens",  page = 1}, new { @class="btn btn-primary" })
+@Html.ActionLink("Womens", "Index", "Products", new { categoryFilter="womens", page = 1}, new { @class="btn btn-secondary" })
+@Html.ActionLink("Boys", "Index", "Products", new { categoryFilter="boys", page = 1}, new { @class="btn btn-primary" })
+@Html.ActionLink("Girls", "Index", "Products", new { categoryFilter="girls", page = 1}, new { @class="btn btn-secondary" })
+@Html.ActionLink("All", "Index", "Products", new { page = 1}, new { @class="btn btn-info" })
+
+    <div class="p-3 border">
+
+        <h4>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</h4>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        
+        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+        {
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+        }
+
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().ProductName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().Price)
+                    </th>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().Description)
+                    </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().ProductImage)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().Category.CategoryName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().Manufacturer.ManufactureName)
+                    </th>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().ShoeSize.Size)
+                    </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().Status.Statuses)
+                    </th>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().UnitsInStock)
+                    </th>*@
+                    <th>
+                        More Info
+                    </th>
+                <tr>
+                <tr></tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr id="Product-@item.ProductID">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>*@
+                        <td>
+                            @*@Html.DisplayFor(modelItem => item.ProductImage)*@
+
+                            <img src="~/Content/assets/images/Products/t_@item.ProductImage" alt="Product Images" title="@item.ProductName" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Manufacturer.ManufactureName)
+                        </td>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.ShoeSize.Size)
+                        </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status.Statuses)
+                        </td>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.UnitsInStock)
+                        </td>*@
+
+                        <td>
+                            @Html.ActionLink("Details", "Details", new { id = item.ProductID })
+
+                            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                            {
+                                <span> | </span>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ProductID })
+                                <span> | </span>
+                                @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
