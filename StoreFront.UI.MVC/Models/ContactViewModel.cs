@@ -11,7 +11,7 @@ namespace StoreFront.UI.MVC.Models
         [Required(ErrorMessage = "Name is Required*")]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Your email is required")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 

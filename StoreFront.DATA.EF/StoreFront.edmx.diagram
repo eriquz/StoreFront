@@ -18,6 +18,9 @@
         <AssociationConnector Association="StoreFrontModel.FK_Products_Manufacturers" ManuallyRouted="false" />
         <AssociationConnector Association="StoreFrontModel.FK_Products_ShoeSizes" ManuallyRouted="false" />
         <AssociationConnector Association="StoreFrontModel.FK_Products_Statuses" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="StoreFrontModel.AspNetUser" Width="1.5" PointX="7.25" PointY="5.125" />
+        <EntityTypeShape EntityType="StoreFrontModel.UserDetail" Width="1.5" PointX="9.5" PointY="5.875" />
+        <AssociationConnector Association="StoreFrontModel.FK_UserDetails_AspNetUsers" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

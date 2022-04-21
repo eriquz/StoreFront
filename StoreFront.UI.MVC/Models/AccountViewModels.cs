@@ -64,6 +64,21 @@ namespace StoreFront.UI.MVC.Models
 
     public class RegisterViewModel
     {
+        [Required(ErrorMessage ="First Name is Required")]
+        [StringLength(20,ErrorMessage ="Character must be less then or equal to 20")]
+        [Display(Name ="First Name")]
+        public string FirstName { get; set; }
+
+        [Required(ErrorMessage = "Last Name is Required")]
+        [StringLength(20, ErrorMessage = "Character must be less then or equal to 20")]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Birthday Date is Required")]
+        [Display(Name = "Date of Birth")]
+        public System.DateTime Birthday { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
