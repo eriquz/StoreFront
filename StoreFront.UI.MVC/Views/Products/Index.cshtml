@@ -5,115 +5,113 @@
 @{ ViewBag.Title = "Products"; }
 
 @* ADDED: Pager Code (Can be placed wherever we want on the page) *@
-    @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
+@*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
 
 
 @* For filtering with my categories in products Controller Index *@
-@Html.ActionLink("Mens", "Index", "Products", new { categoryFilter="mens",  page = 1}, new { @class="btn btn-primary" })
-@Html.ActionLink("Womens", "Index", "Products", new { categoryFilter="womens", page = 1}, new { @class="btn btn-secondary" })
-@Html.ActionLink("Boys", "Index", "Products", new { categoryFilter="boys", page = 1}, new { @class="btn btn-primary" })
-@Html.ActionLink("Girls", "Index", "Products", new { categoryFilter="girls", page = 1}, new { @class="btn btn-secondary" })
-@Html.ActionLink("All", "Index", "Products", new { page = 1}, new { @class="btn btn-info" })
+@Html.ActionLink("Mens", "Index", "Products", new { categoryFilter = "mens", page = 1 }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Womens", "Index", "Products", new { categoryFilter = "womens", page = 1 }, new { @class = "btn btn-secondary" })
+@Html.ActionLink("Boys", "Index", "Products", new { categoryFilter = "boys", page = 1 }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Girls", "Index", "Products", new { categoryFilter = "girls", page = 1 }, new { @class = "btn btn-secondary" })
+@Html.ActionLink("All", "Index", "Products", new { page = 1 }, new { @class = "btn btn-info" })
 
-    <div class="p-3 border">
+<div class="p-3 border">
 
-        <h4>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</h4>
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-        
-        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-        {
-            <p>
-                @Html.ActionLink("Create New", "Create")
-            </p>
-        }
+    <h4>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</h4>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 
+    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    }
+</div>
+    <section></section>
 
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.FirstOrDefault().ProductName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.FirstOrDefault().Price)
-                    </th>
-                    @*<th>
-                        @Html.DisplayNameFor(model => model.FirstOrDefault().Description)
-                    </th>*@
-                    <th>
-                        @Html.DisplayNameFor(model => model.FirstOrDefault().ProductImage)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.FirstOrDefault().Category.CategoryName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.FirstOrDefault().Manufacturer.ManufactureName)
-                    </th>
-                    @*<th>
-                        @Html.DisplayNameFor(model => model.FirstOrDefault().ShoeSize.Size)
-                    </th>*@
-                    <th>
-                        @Html.DisplayNameFor(model => model.FirstOrDefault().Status.Statuses)
-                    </th>
-                    @*<th>
-                        @Html.DisplayNameFor(model => model.FirstOrDefault().UnitsInStock)
-                    </th>*@
-                    <th>
-                        More Info
-                    </th>
-                <tr>
-                <tr></tr>
-            </thead>
+    <div class="latest-products">
+        <div class="container">
+            <div class="row">
 
-            <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr id="Product-@item.ProductID">
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ProductName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Price)
-                        </td>
-                        @*<td>
+                    <div class="col-md-4">
+                        <div class="product-item">
+                            <a href="#"> <img src="~/Content/assets/images/Products/@item.ProductImage" alt="Product Images" title="@item.ProductName" /></a>
+                            <div class="down-content">
+                                <a href="#"><h4>@Html.DisplayFor(modelItem => item.Manufacturer.ManufactureName)</h4></a>
+                                <h6>@Html.DisplayFor(modelItem => item.Price)</h6>
+                                <p>
+                                    @Html.DisplayFor(modelItem => item.ProductName)
+                                    <br />
+                                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                                </p>
+                                <ul class="stars">
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+
+                                @*<div class="row">*@
+                                @*<div class="col-md-6"></div>*@
+                                <div class="text-right">
+                                    <p>
+                                        @Html.DisplayFor(modelItem => item.Status.Statuses)
+                                        <br />
+                                        @Html.ActionLink("Details", "Details", new { id = item.ProductID })
+                                        <br />
+                                        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                                        {
+                                        
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.ProductID })
+                                        <br/>
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
+                                        }
+
+                                    </p>
+                                </div>
+                                @*</div>*@
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    @*<td>
                             @Html.DisplayFor(modelItem => item.Description)
                         </td>*@
-                        <td>
-                            @*@Html.DisplayFor(modelItem => item.ProductImage)*@
 
-                            <img src="~/Content/assets/images/Products/t_@item.ProductImage" alt="Product Images" title="@item.ProductName" />
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Category.CategoryName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Manufacturer.ManufactureName)
-                        </td>
-                        @*<td>
+                    @*@Html.DisplayFor(modelItem => item.ProductImage)*@
+
+
+
+                    @*<td>
                             @Html.DisplayFor(modelItem => item.ShoeSize.Size)
                         </td>*@
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Status.Statuses)
-                        </td>
-                        @*<td>
+
+
+                    @*<td>
                             @Html.DisplayFor(modelItem => item.UnitsInStock)
                         </td>*@
 
-                        <td>
-                            @Html.ActionLink("Details", "Details", new { id = item.ProductID })
 
-                            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-                            {
-                                <span> | </span>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.ProductID })
-                                <span> | </span>
-                                @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
-                            }
-                        </td>
-                    </tr>
+                    @*if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <span> | </span>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ProductID })
+                        <span> | </span>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
+                    }*@
+
+
                 }
-            </tbody>
-        </table>
+            </div>
+        </div>
     </div>
 
 

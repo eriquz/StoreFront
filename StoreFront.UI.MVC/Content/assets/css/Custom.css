@@ -31,4 +31,12 @@
     background-color: #ece1e3;
 }
 
-
+/*Images On Tiles for Products View*/
+.product-item img 
+{
+    max-height: 251px;
+}
+.product-item
+{
+    height: 550px;
+}

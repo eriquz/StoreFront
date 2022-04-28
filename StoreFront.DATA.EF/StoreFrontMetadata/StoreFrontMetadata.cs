@@ -7,8 +7,8 @@ using System.ComponentModel.DataAnnotations;//Added for metadata and validation
 
 namespace StoreFront.DATA.EF //.StoreFrontMetadata Comment this Out to allow function matching the original classes to allow partical view to function
 {
-    class StoreFrontMetadata
-    {
+    
+    
         #region productMetadata
         public class ProductMetadata
         {
@@ -185,4 +185,4 @@ namespace StoreFront.DATA.EF //.StoreFrontMetadata Comment this Out to allow fun
         public partial class Department { }
         #endregion
     }
-}
+
